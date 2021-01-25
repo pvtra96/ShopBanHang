@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from demo.templaza.com/php/dekor/portfolio-grid-4.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Nov 2014 08:42:47 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Danh Mục</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link th:href="@{/user/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/user/fonts/awesome/css/font-awesome.min.css}" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,700,600,500,300,100,200,800" rel="stylesheet" />
+    <link th:href="@{/user/css/owl.carousel.css}" rel="stylesheet" />
+    <link th:href="@{/user/css/owl.theme.css}" rel="stylesheet" />
+    <link rel='stylesheet' th:href='@{/user/rs-plugin/css/settings.css}' />
+    <link th:href="@{/user/style.css}" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="57x57" th:href="@{/user/favicon/apple-icon-57x57.png}">
+    <link rel="apple-touch-icon" sizes="60x60" th:href="@{/user/favicon/apple-icon-60x60.png}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/user/favicon/apple-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="76x76" th:href="@{/user/favicon/apple-icon-76x76.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/user/favicon/apple-icon-114x114.png}">
+    <link rel="apple-touch-icon" sizes="120x120" th:href="@{/user/favicon/apple-icon-120x120.png}">
+    <link rel="apple-touch-icon" sizes="144x144" th:href="@{/user/favicon/apple-icon-144x144.png}">
+    <link rel="apple-touch-icon" sizes="152x152" th:href="@{/user/favicon/apple-icon-152x152.png}">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/user/favicon/apple-icon-180x180.png}">
+    <link rel="manifest" th:href="@{/user/favicon/manifest.json}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" th:content="@{/user/ms-icon-144x144.png}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div th:replace ="common/user :: header"></div>
+    </div><!--end class container-->
+
+    <section class="tzportfolio-wrap">
+        <div class="container">
+            <h3 class="tz-title-portfolio">
+                PORTFOLIO
+            </h3> 
+            <div data-option-key="filter" class="tzfilter">
+                <a class="selected" data-option-value="*" href="#show-all">All</a>
+                <div th:each="category : ${listCategory}" th:remove="tag">
+                	<a th:data-option-value="'.'+${category.id}" href="#" th:text="${category.name}"></a>
+                </div>
+            </div>
+            <div class="tzportfolio-pages tz-no-mansory">
+                            
+<!-- bat dau sua tu day -->
+	<div th:each="product : ${listProduct} " th:remove="tag" >
+	      <div th:class="'element '+ ${product.category.id}">
+	         <div class="tz-inner">
+	            <div class="tz-image-item">
+	            	<!-- <img alt="Aliquam a sollicitudin" src="demos/portfolio/portfolio-grid-4.jpg"> -->
+					<img th:alt="${product.name }" th:src="@{'/img/category/' + ${product.category.name } + '/' + ${product.img} }">
+	                <a th:href="@{'/detail-product?id=' + ${product.id } }" class="tzfa-search"><i class="fa fa-search"></i></a>
+	                <a href="#" class="tzfa-heart"><i class="fa fa-heart"></i></a>
+	            </div>
+	            <h6><a th:href="@{'/detail-product?id=' + ${product.id } }" th:text="${product.name }"></a></h6>
+	         </div>
+	     </div>
+	</div>
+            </div><!--end class tzportfolio-pages-->
+            <div class="tzpagenavi">
+                <button class="tzpage-left">
+                    <i class="fa fa-angle-left"></i>
+                </button>
+                <button class="tzpage-right">
+                    <i class="fa fa-angle-right"></i>
+                </button>
+            </div><!--end class tzpagenavi-->
+        </div><!--end class container-->
+    </section><!--end class tzportfolio-wrap-->
+
+    <div th:replace ="common/user :: footer"></div>
+
+    <script th:src="@{/user/js/jquery.min.js}"></script>
+    <script>
+        jQuery.noConflict();
+    </script>
+    <script th:src="@{/user/js/bootstrap.min.js}"></script>
+    <script th:src="@{/user/js/owl.carousel.js}"></script>
+    <script th:src="@{/user/js/resize.js}"></script>
+    <script th:src="@{/user/js/off-canvas.js}"></script>
+    <script th:src="@{/user/js/jquery.isotope.min.js}"></script>
+    <script th:src="@{/user/js/portfolio.js}"></script>
+    <script th:src="@{/user/js/custom.js}"></script>
+    <script>
+            var Desktop           =   4,
+                tabletportrait    =   3,
+                mobilelandscape   =   2,
+                mobileportrait    =   1,
+                resizeTimer       =   null;
+    </script>
+</body>
+
+<!-- Mirrored from demo.templaza.com/php/dekor/portfolio-grid-4.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Nov 2014 08:44:08 GMT -->
+</html>
