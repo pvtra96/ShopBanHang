@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Coupon</title>
+    <link rel="stylesheet" th:href="@{/admin/css/main.css}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="dashboard">
+                <div th:replace="common/admin :: header"></div>
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Bảng điều khiển</div>
+                        <p class="right__desc">Danh sách coupon</p>
+                        <div class="right__table">
+                            <div class="right__tableWrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Discount</th>
+                                            <th>Expired</th>
+                                            <th>Name</th>
+                                            <th>Sửa</th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+	                                	<div th:each="coupon : ${list}">
+		                                    <td data-label="Id" th:text="${coupon.id }"></td>
+		                                    <td data-label="Discount" th:text="${coupon.discount }"></td>
+		                                    <td data-label="Expired" th:text="${coupon.expired }"></td>
+		                                    <td data-label="Name" th:text="${coupon.name }"></td>
+		                                    <td data-label="Sửa" class="right__iconTable"><a th:href="@{'/admin/update-coupon?id=' + ${coupon.id}}"><img th:src="@{/admin/assets/icon-edit.svg}" alt=""></a></td>
+		                                    <!--  
+		                                    	<td data-label="Xoá" class="right__iconTable"><a th:href="@{'/delete-coupon?id=' + ${coupon.id}}"><img th:src="@{/admin/assets/icon-trash-black.svg}" alt=""></a></td>
+		                                    -->
+	                                	</tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/admin/js/main.js}"></script>
+</body>
+</html>
