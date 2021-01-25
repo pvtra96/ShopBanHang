@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khách Hàng</title>
+    <link rel="stylesheet" th:href="@{admin/css/main.css}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="dashboard">
+                <div th:replace="common/header :: header"></div>
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Bảng điều khiển</div>
+                        <p class="right__desc">Khách Hàng</p>
+                        <div class="right__table">
+                            <div class="right__tableWrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th th:text="#{user.id}"></th>
+                                            <th th:text="#{user.name}"></th>
+                                            <th th:text="#{user.username}"></th>
+                                            <th th:text="#{user.role}"></th>
+                                            <th style="text-align: center" th:text="#{user.img}"></th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        <tr th:each= "user: ${listUser}">
+                                            <td th:text="${user.id}"></td>
+                                            <td th:text="${user.name}"></td>
+                                            <td th:text="${user.userName}"></td>
+                                            <td th:text="${user.role}"></td>
+                                            <td><img th:src="@{'/img/' + ${user.img.getOriginalFilename}}" style="width: 50px;height: 50px" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            	</div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{admin/js/main.js}"></script>
+</body>
+</html>
