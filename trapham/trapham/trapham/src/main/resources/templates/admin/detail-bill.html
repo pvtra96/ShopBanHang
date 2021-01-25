@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Đơn Hàng</title>
+    <link rel="stylesheet" th:href="@{/admin/css/main.css}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="dashboard">
+                <div th:replace="common/admin :: header"></div>
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Bảng điều khiển</div>
+                        <p class="right__desc">Chi Tiết Đơn Hàng</p>
+                        <div class="right__table">
+                            <div class="right__tableWrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Số lượng</th>
+                                            <th>Giá</th>
+                                            <th>Người mua</th>
+                                            <th>Ngày mua</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Tổng tiền</th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+	                                	<div th:each="billProduct : ${list}" th:remove= "tag">
+	                                        <tr>
+	                                            <td data-label="Id" th:text="${billProduct.id }"></td>
+	                                            <td data-label="Số lượng" th:text="${billProduct.quantity }"></td>
+	                                            <td data-label="Giá" th:text="${billProduct.price }"></td>
+	                                            <td data-label="Người mua" th:text="${billProduct.bill.user.userName }"></td>
+	                                            <td data-label="Ngày mua" th:text="${billProduct.bill.buyDate}"></td>
+	                                            <td data-label="Tên sản phẩm" th:text="${billProduct.product.name}"></td>	                                            
+	                                            <td data-label="Tổng tiền" th:text="${billProduct.quantity * billProduct.price }+ ' ₫'"></td>
+	                                        </tr>  
+	                                     </div>  
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/admin/js/main.js}"></script>
+</body>
+</html>
